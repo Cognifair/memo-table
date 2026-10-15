@@ -1,0 +1,5 @@
+interface:
+  display_name: "墨记表格制作 Memo-Table v1.1.0"
+  short_description: "四选一制作表格：墨墨风直角或圆角图片，LaTeX 三线表或网格表"
+  brand_color: "#36b59d"
+  default_prompt: "使用 $memo-table（墨记表格制作）处理这份内容，未指定模式时先询问墨墨风直角图片、圆角图片、LaTeX 三线表或网格表四选一，再按所选路线制作。"
