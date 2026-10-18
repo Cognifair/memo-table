@@ -2,7 +2,7 @@
 name: memo-table
 description: 墨记表格制作 Memo-Table，将文字或表格转换为四种输出：墨墨风直角图片、墨墨风圆角图片、LaTeX array 三线表或网格表。用户说墨记表格制作、Memo-Table、Maimemo Table、墨墨表格、表格转图片或墨墨 LaTeX 表格时使用；先确认四选一，不管理 Markji 卡片、牌组、API 或 TXT 导入文件结构。
 metadata:
-  version: "1.1.0"
+  version: "1.1.1"
 ---
 
 # 墨记表格制作 Memo-Table
