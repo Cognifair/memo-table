@@ -2,6 +2,14 @@
 
 遵循语义化版本：修 bug → patch，新增能力 → minor，改变契约 → major。
 
+## v1.2.3 — 2026-10-24
+
+### 修复
+
+- 圆角渲染器校验 `fontFamily`（字符白名单与长度上限），并禁用页面 JavaScript、阻断外部请求，修复字体配置注入。
+- 新增 `.gitattributes` 固定锁定包换行；`verify()` 对文本文件归一化 CRLF，Windows 默认克隆不再误报 LOCK 失败。
+- 新增字体注入回归脚本 `scripts/test_render_inputs.cjs`。
+
 ## v1.2.2 — 2026-10-24
 
 ### 变更

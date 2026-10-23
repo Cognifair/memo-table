@@ -82,6 +82,12 @@ if (requested !== "rounded") {
 }
 const styleName = "rounded";
 const width = Number.isInteger(data.width) && data.width >= 800 ? data.width : 2000;
+if (data.fontFamily !== undefined) {
+  if (typeof data.fontFamily !== "string" || data.fontFamily.length > 200 ||
+      !/^[A-Za-z0-9 \t,'"._-]+$/.test(data.fontFamily)) {
+    fail("fontFamily must be a plain CSS font stack (letters, digits, spaces, commas, quotes, dots or hyphens; max 200 characters)");
+  }
+}
 const fontFamily = data.fontFamily || '"Microsoft YaHei", "Noto Sans CJK SC", sans-serif';
 const headerHtml = data.headers.map((cell) => `<th scope="col">${escapeHtml(cell)}</th>`).join("");
 
@@ -293,7 +299,12 @@ if (!executablePath) {
 (async () => {
   const browser = await chromium.launch({ headless: true, executablePath });
   try {
-    const page = await browser.newPage({ viewport: { width, height: 1800 }, deviceScaleFactor: 1 });
+    const page = await browser.newPage({ viewport: { width, height: 1800 }, deviceScaleFactor: 1,
+      javaScriptEnabled: false });
+    await page.route("**/*", (route) => {
+      const url = route.request().url();
+      return url.startsWith("file:") || url.startsWith("data:") ? route.continue() : route.abort();
+    });
     await page.goto(`file:///${htmlPath.replaceAll("\\", "/")}`);
     await page.locator(selector).screenshot({ path: pngPath, omitBackground: true });
   } finally {

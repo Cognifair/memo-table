@@ -1,8 +1,8 @@
 'use strict';
 const fs=require('fs'), path=require('path'), crypto=require('crypto');
 const root=__dirname;
-function digest(p){return crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex')}
-function verify(){const manifest=JSON.parse(fs.readFileSync(path.join(root,'LOCK.json'),'utf8'));for(const [file,hash]of Object.entries(manifest)){if(digest(path.join(root,file))!==hash)throw Error('LOCK FAILED: '+file+' was modified. Restore the original package; edit data JSON only.')}}
+function digest(p,text){const b=fs.readFileSync(p);const data=text?Buffer.from(b.toString('utf8').replace(/\r\n/g,'\n'),'utf8'):b;return crypto.createHash('sha256').update(data).digest('hex')}
+function verify(){const manifest=JSON.parse(fs.readFileSync(path.join(root,'LOCK.json'),'utf8'));for(const [file,hash]of Object.entries(manifest)){const text=/\.(cjs|js|html|json)$/i.test(file);if(digest(path.join(root,file),text)!==hash)throw Error('LOCK FAILED: '+file+' was modified. Restore the original package; edit data JSON only.')}}
 function playwright(){try{return require('playwright')}catch{const base=process.env.USERPROFILE?path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'):'';if(base&&fs.existsSync(base))return require(base);throw Error('Playwright missing. Set NODE_PATH to your existing runtime packages.')}}
 function validate(d){
  const obj=(v)=>v&&typeof v==='object'&&!Array.isArray(v);
