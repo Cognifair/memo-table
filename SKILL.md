@@ -2,7 +2,7 @@
 name: memo-table
 description: 墨记表格制作 Memo-Table，将文字或表格转换为六种输出：墨墨风圆角、产品表格·指标卡、市场份额对比、销售列表透明底，或 LaTeX array 三线表/网格表。用户说墨记表格制作、Memo-Table、Maimemo Table、墨墨表格、表格转图片或墨墨 LaTeX 表格时使用；先渲染预览再确认样式，不管理 Markji 卡片、牌组、API 或 TXT 导入文件结构。
 metadata:
-  version: "1.2.1"
+  version: "1.2.2"
 ---
 
 # 墨记表格制作 Memo-Table

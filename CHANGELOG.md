@@ -2,6 +2,12 @@
 
 遵循语义化版本：修 bug → patch，新增能力 → minor，改变契约 → major。
 
+## v1.2.2 — 2026-10-24
+
+### 变更
+
+- 新增 MIT `LICENSE`，README 补 License 说明。
+
 ## v1.2.1 — 2026-10-23
 
 ### 修复
@@ -11,6 +17,12 @@
 - `render.cjs` 查找 Playwright 时改用 `USERPROFILE` 判断（原先判断 `LOCALAPPDATA` 却拼 `USERPROFILE`）。
 - 文档同步说明容差规则；`LOCK.json` 随 `render.cjs` 更新哈希。
 - README 的「Memo 系列」表与 `references/satellites.md` 改由 `memo-series.json` 生成（`sync-series`），不再手写跨技能清单。
+
+## v1.2.2 — 2026-10-24
+
+### 变更
+
+- 新增 MIT `LICENSE`，README 补 License 说明。
 
 ## v1.2.0 — 2026-10-23
 
@@ -26,11 +38,23 @@
 - 锁定包自检 13/13 通过，三款基准 PNG 与本机定稿逐字节一致。
 - 圆角渲染与锁定渲染均从新目录调用成功。
 
+## v1.2.2 — 2026-10-24
+
+### 变更
+
+- 新增 MIT `LICENSE`，README 补 License 说明。
+
 ## v1.1.1 — 2026-10-19
 
 ### 新增
 
 - 新增 `version.json`，供墨卡大师的支链版本检查读取；此后每次发版随版本号同步更新。
+
+## v1.2.2 — 2026-10-24
+
+### 变更
+
+- 新增 MIT `LICENSE`，README 补 License 说明。
 
 ## v1.1.0 — 2026-10-18
 
