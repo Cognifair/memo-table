@@ -2,6 +2,16 @@
 
 遵循语义化版本：修 bug → patch，新增能力 → minor，改变契约 → major。
 
+## v1.2.1 — 2026-10-23
+
+### 修复
+
+- 预览展示前先把图片复制到当前工作目录：客户端只能预览工作区内的图片，直接引用技能目录会显示“无法预览”。
+- `selftest.cjs` 的基准校验从「PNG 字节完全一致」改为「尺寸一致 + 文件大小容差 ≤25%」，换机器/字体不再被自检拦死。
+- `render.cjs` 查找 Playwright 时改用 `USERPROFILE` 判断（原先判断 `LOCALAPPDATA` 却拼 `USERPROFILE`）。
+- 文档同步说明容差规则；`LOCK.json` 随 `render.cjs` 更新哈希。
+- README 的「Memo 系列」表与 `references/satellites.md` 改由 `memo-series.json` 生成（`sync-series`），不再手写跨技能清单。
+
 ## v1.2.0 — 2026-10-23
 
 ### 变更

@@ -56,7 +56,7 @@ node scripts/locked/render.cjs input.json <新输出目录>
 node scripts/locked/selftest.cjs <新目录>
 ```
 
-基准不一致时停止并检查字体/浏览器，不改基准图。
+基准只校验尺寸与容差（文件大小差异 ≤25%），不要求跨机器逐字节相同；尺寸不符或超出容差时停止并检查字体/浏览器，不改基准图。
 
 ## LaTeX 路线
 
@@ -66,10 +66,16 @@ node scripts/locked/selftest.cjs <新目录>
 
 正确模板与检查规则见 [references/array-tables.md](references/array-tables.md)。该约定是本技能的交付要求，不代表所有 LaTeX 平台的通用限制，也不代表已经在墨墨客户端验证渲染。
 
-## 与其他 Memo 技能的分工
+生成表格不等于已上传或插入卡片；图片的 HTML 是本地编辑源，不直接写进 Markji 正文。
 
-- [墨卡大师 Memo-Cardest](https://github.com/Cognifair/memo-cardest)：知识拆解、题型设计与卡片正文语法。
-- [墨记文档导入 Memo-Txtimporter](https://github.com/Cognifair/memo-txtimporter)：章节、分卡符和答案线组成的 TXT 文件容器。
-- **Memo-Table**：只负责表格图片或代码，不管理卡片、牌组、账户 API 或 TXT 导入文档。
+## Memo 系列
 
-生成表格不等于已上传或插入卡片；图片的 HTML 是本地编辑源，不直接写进 Markji 正文。本技能没有接入本次另外三项技能的可选扩展更新框架，不会自动查版本或安装扩展。
+<!-- memo-series:begin -->
+| 技能 | 职责 |
+|---|---|
+| [墨卡大师 Memo-Cardest](https://github.com/Cognifair/memo-cardest) | 核心制卡：知识拆解、题型、正文语法与牌组操作 |
+| [Memo-MinerUOCR](https://github.com/Cognifair/memo-mineruocr) | 扫描件与大 PDF 识别、拆分并合并 Markdown |
+| [墨记文档导入 Memo-Txtimporter](https://github.com/Cognifair/memo-txtimporter) | TXT 容器格式、分卡校验与图片回填 |
+| [迁墨 Memo-Ankitransfer](https://github.com/Cognifair/memo-ankitransfer) | Anki 图片挖空转墨墨原生遮罩 |
+| [Memo-QAhelper](https://github.com/Cognifair/memo-qahelper) | 墨墨记忆卡使用答疑（官方百科与论坛） |
+<!-- memo-series:end -->

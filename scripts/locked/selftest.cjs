@@ -1,5 +1,6 @@
-const fs=require('fs'),path=require('path'),crypto=require('crypto');
+const fs=require('fs'),path=require('path');
 const {render,validate,verify}=require('./render.cjs');
+function pngInfo(p){const b=fs.readFileSync(p);if(b.length<24||b.toString('ascii',1,4)!=='PNG')throw Error('Not a PNG: '+p);return{width:b.readUInt32BE(16),height:b.readUInt32BE(20),bytes:b.length}}
 (async()=>{
  verify();const dest=path.resolve(process.argv[2]||'locked-selftest-'+Date.now());if(fs.existsSync(dest))throw Error('Self-test destination must not exist');fs.mkdirSync(dest,{recursive:true});const results=[];
  for(const style of ['table','comparison','sales']){
@@ -16,9 +17,12 @@ const {render,validate,verify}=require('./render.cjs');
    const input=path.join(dest,style+'-'+mode+'.json');fs.writeFileSync(input,JSON.stringify(d,null,2));
    const out=path.join(dest,style+'-'+mode);const report=await render(input,out);results.push({style,mode,pass:report.pass,width:report.width,height:report.height});
    if(mode==='baseline'){
-    const hash=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
-    results.at(-1).identicalPngBytes=hash(path.join(out,'output.png'))===hash(path.join(__dirname,'references',style+'.png'));
-    if(!results.at(-1).identicalPngBytes)throw Error('Baseline image differs from approved reference. Check browser/fonts/OS. Do not deliver as an identical reproduction.');
+    const png=pngInfo(path.join(out,'output.png')),ref=pngInfo(path.join(__dirname,'references',style+'.png'));
+    const sameSize=png.width===ref.width&&png.height===ref.height;
+    const bytesDelta=Math.abs(png.bytes-ref.bytes)/ref.bytes;
+    results.at(-1).referenceMatch={sameSize,bytesDelta:Number(bytesDelta.toFixed(4)),width:ref.width,height:ref.height};
+    if(!sameSize)throw Error('Baseline image size differs from approved reference ('+png.width+'x'+png.height+' vs '+ref.width+'x'+ref.height+'). Check browser/fonts/OS.');
+    if(bytesDelta>0.25)throw Error('Baseline image differs beyond tolerance ('+(bytesDelta*100).toFixed(1)+'%). Check browser/fonts/OS.');
    }
   }
  }

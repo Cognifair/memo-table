@@ -2,7 +2,7 @@
 name: memo-table
 description: 墨记表格制作 Memo-Table，将文字或表格转换为六种输出：墨墨风圆角、产品表格·指标卡、市场份额对比、销售列表透明底，或 LaTeX array 三线表/网格表。用户说墨记表格制作、Memo-Table、Maimemo Table、墨墨表格、表格转图片或墨墨 LaTeX 表格时使用；先渲染预览再确认样式，不管理 Markji 卡片、牌组、API 或 TXT 导入文件结构。
 metadata:
-  version: "1.2.0"
+  version: "1.2.1"
 ---
 
 # 墨记表格制作 Memo-Table
@@ -19,6 +19,7 @@ metadata:
 2. 准备四张预览：
    - `rounded`：用使用者数据跑 `scripts/render_table.cjs`，输出预览 PNG。
    - `table` / `comparison` / `sales`：直接展示 `scripts/locked/references/<style>.png`（锁定样稿，结构与最终一致；示例内容不是用户数据，展示时说明）。
+   展示前先把要引用的图片复制到当前工作目录：客户端通常只能预览工作区内的图片，直接引用技能目录下的文件会显示“无法预览”。
 3. 在回复里并排展示这四张预览，然后用问题框提问：
 
    > 请选择表格样式（预览见上）：
@@ -111,7 +112,7 @@ Treat these as defaults. Preserve a user's explicit palette, font, dimensions, a
    生成 `output.png`、`output.html`、`input.json`、`report.json`。
 3. 检查 `report.json` 的 `pass` 为 true；失败按报错修数据，不改模板，不重算哈希。
 4. 视觉验收 `output.png`；`table`、`comparison` 为不透明浅灰绿背景，`sales` 为透明底。
-5. 新环境首次使用先跑 `node scripts/locked/selftest.cjs <新目录>`；基准不一致时停止并检查字体/浏览器，不改基准图。
+5. 新环境首次使用先跑 `node scripts/locked/selftest.cjs <新目录>`；只校验尺寸与容差（文件大小差异 ≤25%），**不要求跨机器逐字节相同**。尺寸不符或超出容差时停止并检查字体/浏览器，不改基准图。
 
 固定宽度（CSS px，2 倍输出）：`table` 903、`comparison` 949、`sales` 1022。内容变多只增高，不改字号、列宽或配色。
 

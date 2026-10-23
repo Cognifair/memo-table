@@ -40,7 +40,7 @@ $env:NODE_PATH='C:/Users/Onoya/.cache/codex-runtimes/codex-primary-runtime/depen
 - 采用浏览器 DOM 的 textContent 写入数据，不拼接输入为 HTML；禁止外部网络请求。
 - 字号、颜色、列宽、圆角、阴影、图标和圆点样式不变。仅确定性换行、增高标题区/行/卡片/画布；内容变多时总高度会增长，这不等于截图尺寸永久不变。
 - 自动检测文本越界、横向溢出、单元格重叠、标题/圆点碰撞和画布越界；不以删字、截断、省略号或缩小字号解决。
-- 新环境先运行基准测试，基准 PNG 必须与本包参考图完全一致，不一致则停止。这能发现操作系统、字体或浏览器差异，但不是跨机器像素永远相同的保证。
+- 新环境先运行基准测试：只校验尺寸与文件大小容差（≤25%），不要求跨机器逐字节一致；尺寸不符或超出容差则停止并检查字体/浏览器。这能发现操作系统、字体或浏览器差异，但不是跨机器像素永远相同的保证。
 - 自动几何检查不能证明知识内容正确或所有字符都存在字形。正式图仍需视觉验收，尤其是生僻字、emoji 和不同电脑环境。
 
 ## 自检
@@ -50,7 +50,7 @@ $env:NODE_PATH='C:/Users/Onoya/.cache/codex-runtimes/codex-primary-runtime/depen
 & 'C:/Users/Onoya/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe' ./selftest.cjs ./new-test-output
 ```
 
-涵盖三款原稿、长中文标题、连续英文、12行内容、单行、HTML特殊字符和非法字段等13个用例。本机验收结果见 QA-SUMMARY.json；三款原稿的 PNG 文件字节与定稿一致。selftest 输出的压力测试数据并非用户真实内容。
+涵盖三款原稿、长中文标题、连续英文、12行内容、单行、HTML特殊字符和非法字段等13个用例。本机验收结果见 QA-SUMMARY.json；三款原稿的 PNG 在本机通过尺寸与容差校验（不同机器允许渲染差异）。selftest 输出的压力测试数据并非用户真实内容。
 
 运行依赖 Node.js、Playwright 和已安装的 Chrome/Edge。包不含浏览器、Node 或字体安装包，不会自动下载；本机已有 Codex 运行时可直接复用。其他电脑需要先准备等价环境，用 MEMO_TABLE_BROWSER 指定本地浏览器。字体或浏览器不同必须重新跑基准，不能绕过失败。
 
