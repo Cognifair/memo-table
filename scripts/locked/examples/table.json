@@ -1,0 +1,52 @@
+{
+  "style": "table",
+  "title": "Top Performing Products",
+  "headers": [
+    "NO",
+    "Item Preview",
+    "Date",
+    "Income"
+  ],
+  "rows": [
+    [
+      "1",
+      "Item Name",
+      "14-07-2025",
+      "+$1.240.560"
+    ],
+    [
+      "2",
+      "Item Name",
+      "25-08-2025",
+      "+$1.120.500"
+    ],
+    [
+      "3",
+      "Item Name",
+      "04-10-2025",
+      "+$1.160.000"
+    ],
+    [
+      "4",
+      "Item Name",
+      "22-10-2025",
+      "+$1.210.460"
+    ],
+    [
+      "5",
+      "Item Name",
+      "25-12-2025",
+      "+$1.940.140"
+    ]
+  ],
+  "metrics": [
+    {
+      "value": "147K",
+      "caption": "Lorem ipsum dolor sit\namet, consectetur"
+    },
+    {
+      "value": "285K",
+      "caption": "Lorem ipsum dolor sit\namet, consectetur"
+    }
+  ]
+}

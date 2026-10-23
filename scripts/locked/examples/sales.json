@@ -1,0 +1,46 @@
+{
+  "style": "sales",
+  "title": "Sales Table 2025 – 2029",
+  "rows": [
+    {
+      "name": "Sales One",
+      "description": "Lorem ipsum dolor sit",
+      "value1": "+10,000K",
+      "value2": "$32,584",
+      "year": "2025",
+      "status": "Done"
+    },
+    {
+      "name": "Sales Two",
+      "description": "Project subtitle",
+      "value1": "+22,000K",
+      "value2": "$12,000+",
+      "year": "2026",
+      "status": "Done"
+    },
+    {
+      "name": "Sales Three",
+      "description": "Lorem ipsum dolor sit",
+      "value1": "+17,000K",
+      "value2": "$5,000-",
+      "year": "2027",
+      "status": "Done"
+    },
+    {
+      "name": "Sales Four",
+      "description": "Lorem ipsum dolor sit",
+      "value1": "+13,020K",
+      "value2": "$3,890-",
+      "year": "2028",
+      "status": "Done"
+    },
+    {
+      "name": "Sales Five",
+      "description": "Lorem ipsum dolor sit",
+      "value1": "+25,540K",
+      "value2": "$12,520+",
+      "year": "2029",
+      "status": "Done"
+    }
+  ]
+}

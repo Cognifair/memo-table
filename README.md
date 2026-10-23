@@ -1,48 +1,62 @@
 # 墨记表格制作 Memo-Table
 
-将文字或已有表格转换为墨墨风透明图片，或可直接复制的 LaTeX array 表格代码。调用名为 `$memo-table`，版本以 [SKILL.md](SKILL.md) 的 `metadata.version` 为准。
+将文字或已有表格转换为透明 PNG、锁定样式的产品表格/对比图/销售列表，或可直接复制的 LaTeX array 代码。调用名为 `$memo-table`，版本以 [SKILL.md](SKILL.md) 的 `metadata.version` 为准。
 
-## 四种制作方式
+## 六种样式
 
-| 模式 | 输出 |
-|---|---|
-| 墨墨风图片生成 直角 | 直角表格的透明 PNG 与可编辑 HTML |
-| 墨墨风图片生成 圆角 | 32 px 外圆角表格的透明 PNG 与可编辑 HTML |
-| LaTeX 表格生成 三线表 | 左对齐，无竖线，仅顶部、表头下、底部三条横线 |
-| LaTeX 表格生成 网格表 | 居中，有竖线，每一行都有横线 |
+| 样式 | 实现 | 结构 |
+|---|---|---|
+| 墨墨风·圆角（`rounded`） | `scripts/render_table.cjs` | 通用：任意表头与行 |
+| 产品表格·指标卡（`table`） | `scripts/locked/render.cjs` | 固定：4 列 + 2 个指标 |
+| 市场份额对比（`comparison`） | `scripts/locked/render.cjs` | 固定：5 列（标签、3 值、差值） |
+| 销售列表·透明底（`sales`） | `scripts/locked/render.cjs` | 固定：6 个字段 |
+| LaTeX 三线表 | 直接输出代码 | 仅三条横线 |
+| LaTeX 网格表 | 直接输出代码 | 有竖线、逐行横线 |
 
-用户没有明确完整模式时，先询问并等待回答；已经明确模式时不重复询问，不同时生成两套结果。输入数据与措辞优先保留，不擅自改写知识内容。
+**选型方式**：没有明确指定样式时，先展示四张图片预览——`rounded` 用用户数据渲染，锁定三款直接展示 `scripts/locked/references/<style>.png`；再用问题框按名称询问。已明确指定时不重复问。
 
-## 使用示例
+> 直角墨墨风（`square`）已在 v1.2.0 取消。
+>
+> `table`、`comparison` 是不透明浅灰绿背景；`rounded`、`sales` 是透明底。
 
-> 使用 $memo-table，把这份对照内容做成墨墨风圆角图片。
-
-> 使用 $memo-table，把下面的内容转换为 LaTeX 三线表。
-
-## 图片路线
-
-默认采用克制的绿色配色、透明背景、2000 px 宽度与适合中文阅读的字体；保留用户明确指定的样式。图片完成后需检查文字、截断、布局、透明通道和角落透明度。
-
-渲染器需要已有 Node.js、Playwright 包和本地 Chrome、Edge 或 Chromium；不会自行安装浏览器。可通过 `MAIMEMO_TABLE_BROWSER` 指定已有浏览器的绝对路径。
-
-输入示例：
+## 圆角路线（通用结构）
 
 ```json
 {
   "title": "概念对照",
-  "cornerStyle": "square",
+  "style": "rounded",
   "headers": ["项目", "概念 A", "概念 B"],
   "rows": [["特征", "说明 A", "说明 B"]]
 }
 ```
 
-运行已有环境中的渲染器：
-
 ```text
 node scripts/render_table.cjs input.json output.png output.html
 ```
 
-`cornerStyle` 可为 `square` 或 `rounded`；HTML 参数省略时保存在 PNG 旁边。可选输入字段包括 `width`、`fontFamily` 和 `theme`。样式资源见 [assets/table-theme.css](assets/table-theme.css)。
+默认 2000 px 宽；可选 `width`、`fontFamily`、`theme`（`accent`/`light`/`deep`/`white`）。该脚本只处理 `rounded`，其它样式会提示改用锁定渲染器。
+
+## 锁定三款（固定结构）
+
+模板、渲染器与哈希清单已锁定，**只填数据 JSON，不改样式**。数据结构以 [scripts/locked/examples](scripts/locked/examples) 为准：
+
+- `table`：`headers` 恰好 `["NO","Item Preview","Date","Income"]`；每行 4 个字符串；`metrics` 恰好 2 条 `{value, caption}`。
+- `comparison`：`headers` 恰好 5 项（标签、3 个值、差值）；每行 5 个字符串。
+- `sales`：`rows` 每项含 `name`、`description`、`value1`、`value2`、`year`、`status`。
+
+```text
+node scripts/locked/render.cjs input.json <新输出目录>
+```
+
+输出目录必须不存在或为空；生成 `output.png`、`output.html`、`input.json`、`report.json`。检查 `report.json` 的 `pass` 为 true，再打开 PNG 视觉验收。失败按报错修数据，不改模板、不重算哈希。
+
+首次在新环境使用先跑基准自检：
+
+```text
+node scripts/locked/selftest.cjs <新目录>
+```
+
+基准不一致时停止并检查字体/浏览器，不改基准图。
 
 ## LaTeX 路线
 

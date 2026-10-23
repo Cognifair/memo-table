@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Memo Table — Reference Style Preview</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;background:transparent;font-family:Arial,"Microsoft YaHei",sans-serif;color:#555f5d}
+.canvas{width:903px;height:440px;padding:14px 44px 54px 26px;background:#f2f5f4}
+.panel{width:833px;height:372px;background:#ffffff;border-radius:16px;box-shadow:0 2px 5px rgba(34,57,51,.07),0 10px 18px rgba(34,57,51,.10),0 22px 32px -7px rgba(34,57,51,.20),0 0 14px rgba(34,57,51,.05);overflow:hidden}
+.titlebar{height:48px;background:#5d5d5d;position:relative;display:flex;align-items:center;justify-content:center}
+h1{margin:0;color:#f3faf8;font-size:18px;line-height:24px;font-weight:700}
+.dots{position:absolute;right:20px;top:19px;display:flex;gap:8px}.dot{width:10px;height:10px;border-radius:50%;background:#36b59d}.dot:nth-child(2){background:#ea9d29}.dot:nth-child(3){background:#da643f}
+.content{display:flex;padding:18px 21px 10px;gap:44px}
+table{border-collapse:separate;border-spacing:5px 0;width:624px;table-layout:fixed;margin-left:-5px}
+th{height:49px;background:#36b59d;border-radius:9px 9px 0 0;font-size:18px;text-align:center;font-weight:700;color:#ffffff}
+td{height:48.5px;font-size:15px;font-weight:400;vertical-align:middle;white-space:nowrap}
+td:first-child{text-align:center;font-weight:700}td:nth-child(2){padding-left:19px}td:nth-child(3),td:nth-child(4){text-align:center}
+.stats{flex:1;padding-top:0;min-width:125px}.stat+.stat{margin-top:43px}.icon{width:35px;height:35px;background:#36b59d;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.icon svg{width:20px;height:20px;stroke:none;fill:#ffffff}
+.number{color:#3f514c;font-size:29px;font-weight:700;line-height:36px;margin-top:7px;letter-spacing:-.7px}.description{color:#7b8984;font-size:10px;line-height:16px;margin-top:6px;letter-spacing:.15px}
+</style>
+</head>
+<body>
+<main class="canvas">
+ <section class="panel">
+  <header class="titlebar"><h1>Top Performing Products</h1><div class="dots" aria-label="green orange red"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div></header>
+  <div class="content">
+   <table aria-label="Top Performing Products">
+    <colgroup><col style="width:60px"><col style="width:180px"><col style="width:180px"><col style="width:180px"></colgroup>
+    <thead><tr><th>NO</th><th>Item Preview</th><th>Date</th><th>Income</th></tr></thead>
+    <tbody>
+     <tr><td>1</td><td>Item Name</td><td>14-07-2025</td><td>+$1.240.560</td></tr>
+     <tr><td>2</td><td>Item Name</td><td>25-08-2025</td><td>+$1.120.500</td></tr>
+     <tr><td>3</td><td>Item Name</td><td>04-10-2025</td><td>+$1.160.000</td></tr>
+     <tr><td>4</td><td>Item Name</td><td>22-10-2025</td><td>+$1.210.460</td></tr>
+     <tr><td>5</td><td>Item Name</td><td>25-12-2025</td><td>+$1.940.140</td></tr>
+    </tbody>
+   </table>
+   <aside class="stats">
+    <div class="stat"><div class="icon"><svg viewBox="0 0 24 24"><rect x="4" y="12" width="4" height="8" rx=".7"/><rect x="10" y="5" width="4" height="15" rx=".7"/><rect x="16" y="9" width="4" height="11" rx=".7"/></svg></div><div class="number">147K</div><div class="description">Lorem ipsum dolor sit<br>amet, consectetur</div></div>
+    <div class="stat"><div class="icon"><svg viewBox="0 0 24 24"><rect x="4" y="12" width="4" height="8" rx=".7"/><rect x="10" y="5" width="4" height="15" rx=".7"/><rect x="16" y="9" width="4" height="11" rx=".7"/></svg></div><div class="number">285K</div><div class="description">Lorem ipsum dolor sit<br>amet, consectetur</div></div>
+   </aside>
+  </div>
+ </section>
+</main>
+</body>
+</html>

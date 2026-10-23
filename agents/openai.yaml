@@ -1,5 +1,5 @@
 interface:
-  display_name: "墨记表格制作 Memo-Table v1.1.1"
-  short_description: "四选一制作表格：墨墨风直角或圆角图片，LaTeX 三线表或网格表"
+  display_name: "墨记表格制作 Memo-Table v1.2.0"
+  short_description: "先展示预览再选样式：圆角通用表、锁定款产品表格/市场份额对比/销售列表，或 LaTeX 三线/网格表"
   brand_color: "#36b59d"
-  default_prompt: "使用 $memo-table（墨记表格制作）处理这份内容，未指定模式时先询问墨墨风直角图片、圆角图片、LaTeX 三线表或网格表四选一，再按所选路线制作。"
+  default_prompt: "使用 $memo-table（墨记表格制作）处理这份内容：先展示四张图片预览（圆角用用户数据渲染，锁定三款展示定稿样稿），用问题框让用户选样式（或 LaTeX 三线/网格），再按所选样式制作；锁定款只填数据 JSON，不改模板。"

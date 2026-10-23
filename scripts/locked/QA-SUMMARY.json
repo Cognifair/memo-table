@@ -1,0 +1,87 @@
+{
+  "time": "2026-10-23T11:57:34.180Z",
+  "results": [
+    {
+      "style": "table",
+      "mode": "baseline",
+      "pass": true,
+      "width": 903,
+      "height": 440,
+      "identicalPngBytes": true
+    },
+    {
+      "style": "table",
+      "mode": "long-content",
+      "pass": true,
+      "width": 903,
+      "height": 2245
+    },
+    {
+      "style": "table",
+      "mode": "one-row",
+      "pass": true,
+      "width": 903,
+      "height": 440
+    },
+    {
+      "style": "comparison",
+      "mode": "baseline",
+      "pass": true,
+      "width": 949,
+      "height": 835,
+      "identicalPngBytes": true
+    },
+    {
+      "style": "comparison",
+      "mode": "long-content",
+      "pass": true,
+      "width": 949,
+      "height": 2477
+    },
+    {
+      "style": "comparison",
+      "mode": "one-row",
+      "pass": true,
+      "width": 949,
+      "height": 835
+    },
+    {
+      "style": "sales",
+      "mode": "baseline",
+      "pass": true,
+      "width": 1022,
+      "height": 582,
+      "identicalPngBytes": true
+    },
+    {
+      "style": "sales",
+      "mode": "long-content",
+      "pass": true,
+      "width": 1022,
+      "height": 2119
+    },
+    {
+      "style": "sales",
+      "mode": "one-row",
+      "pass": true,
+      "width": 1022,
+      "height": 582
+    },
+    {
+      "name": "reject-css",
+      "pass": true
+    },
+    {
+      "name": "reject-extra-columns",
+      "pass": true
+    },
+    {
+      "name": "reject-empty-rows",
+      "pass": true
+    },
+    {
+      "name": "reject-html-as-config",
+      "pass": true
+    }
+  ]
+}
