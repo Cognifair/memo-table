@@ -2,7 +2,7 @@
 name: memo-table
 description: 墨记表格制作 Memo-Table，将文字或表格转换为六种输出：墨墨风圆角、产品表格·指标卡、市场份额对比、销售列表透明底，或 LaTeX array 三线表/网格表。用户说墨记表格制作、Memo-Table、Maimemo Table、墨墨表格、表格转图片或墨墨 LaTeX 表格时使用；先渲染预览再确认样式，不管理 Markji 卡片、牌组、API 或 TXT 导入文件结构。
 metadata:
-  version: "1.2.3"
+  version: "1.2.4"
 ---
 
 # 墨记表格制作 Memo-Table
@@ -39,6 +39,7 @@ metadata:
 - `table`、`comparison` 的外围背景是**不透明浅灰绿**；`rounded`、`sales` 是透明底。选型时如实说明。
 - 锁定三款是**固定结构**（见下方数据结构）：数据不匹配时说明限制并请用户决定，不硬塞、不改模板。
 - 不得修改 `scripts/locked/templates/`、`scripts/locked/render.cjs`、`scripts/locked/LOCK.json`；只改数据 JSON。LOCK 校验失败时恢复原包，不重算哈希。
+- **需要解锁/修改锁定包或模板属于权限请求**：有交互式问题框时用问题框；Codex Desktop 的 `request_user_input` 不允许权限请求时，用**一条**简洁文字确认，不得把多个问题合并。未获明确同意不得改 LOCK 包；结构不匹配时优先建议独立适配版，不要求解锁原包。
 - 预览图只用于选型，不是最终交付；选定后仍按该样式重新渲染并验收。
 - 只说「图片」或「LaTeX」时，按上述问题确认具体样式，不自行切换类别。
 - 本次请求如果只是修改或审查技能本身，不向使用者提样式问题。
