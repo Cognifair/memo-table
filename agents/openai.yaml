@@ -1,5 +1,5 @@
 interface:
-  display_name: "墨记表格制作 Memo-Table v1.2.4"
-  short_description: "先展示预览再选样式：圆角通用表、锁定款产品表格/市场份额对比/销售列表，或 LaTeX 三线/网格表"
+  display_name: "墨记表格制作 Memo-Table v1.3.0"
+  short_description: "先按材料结构标注推荐与不推荐，再预览选择图片或 LaTeX 表格样式"
   brand_color: "#36b59d"
-  default_prompt: "使用 $memo-table（墨记表格制作）处理这份内容：先展示四张图片预览（圆角用用户数据渲染，锁定三款展示定稿样稿），用问题框让用户选样式（或 LaTeX 三线/网格），再按所选样式制作；锁定款只填数据 JSON，不改模板。"
+  default_prompt: "使用 $memo-table 处理这份材料：先检查合并单元格、表头层级和内容密度，标注各样式的推荐程度与原因，再预览选型制作；不硬套模板，不改锁定包。"

@@ -6,14 +6,32 @@
 
 | 样式 | 实现 | 结构 |
 |---|---|---|
-| 墨墨风·圆角（`rounded`） | `scripts/render_table.cjs` | 通用：任意表头与行 |
+| 墨墨风·圆角（`rounded`） | `scripts/render_table.cjs`；复杂结构另做非锁定布局适配 | 现有 JSON：单层表头、等长行数组；合并与层级另做适配验收 |
 | 产品表格·指标卡（`table`） | `scripts/locked/render.cjs` | 固定：4 列 + 2 个指标 |
 | 市场份额对比（`comparison`） | `scripts/locked/render.cjs` | 固定：5 列（标签、3 值、差值） |
 | 销售列表·透明底（`sales`） | `scripts/locked/render.cjs` | 固定：6 个字段 |
 | LaTeX 三线表 | 直接输出代码 | 仅三条横线 |
 | LaTeX 网格表 | 直接输出代码 | 有竖线、逐行横线 |
 
-**选型方式**：没有明确指定样式时，先展示四张图片预览——`rounded` 用用户数据渲染，锁定三款直接展示 `scripts/locked/references/<style>.png`；再用问题框按名称询问。已明确指定时不重复问。
+**选型方式**：先根据材料的合并关系、表头层级、列语义和文本密度，说明各样式“推荐 / 有条件推荐 / 不推荐”的原因，再展示预览供选择。`rounded` 结构匹配时用用户数据渲染；复杂合并表可先做同风格的非锁定适配小样。锁定三款展示明确标注的示例，不硬套字段或补造指标。已指定样式不重复询问，但仍检查适配性。
+
+圆角墨墨简约风可作为图片路线的通用布局方向；这不表示现有 JSON 渲染器原生支持所有复杂表格。按需调整非锁定布局后，仍需检查合并范围、表头层级与阅读效果。详见 [材料适配说明](references/style-selection.md)。
+
+## 安装与使用
+
+适合把已有文字或表格制作成图片/表格代码；不负责知识拆解、Markji 账户操作或 TXT 文件容器。图片渲染需已安装的 Node.js、Playwright、Chrome/Edge 和相应字体；本技能不自动安装依赖。
+
+将本仓库克隆到所用客户端的技能目录，目录名为 `memo-table`。例如在该技能目录的父目录中执行：
+
+```text
+git clone https://github.com/Cognifair/memo-table.git memo-table
+```
+
+Codex / WorkBuddy 安装或更新后新开会话或重启客户端。使用时可直接说：
+
+> 使用 $memo-table，把这份概念对照表做成圆角图片；先判断材料结构是否需要布局适配。
+
+主要目录：`SKILL.md` 为执行规则，`references/` 为选型与 LaTeX 说明，`scripts/` 为渲染与测试入口；`scripts/locked/` 为不可随意改动的固定样式包。
 
 > 直角墨墨风（`square`）已在 v1.2.0 取消。
 >
