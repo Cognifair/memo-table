@@ -1,5 +1,7 @@
 # 墨记表格制作 Memo-Table
 
+> 🌐 [墨卡大师 · 专业制卡工作流](https://moka-master.app.workbuddy.host/?sharecode=ZYHGDS4GEB)
+
 将文字或已有表格转换为透明 PNG、锁定样式的产品表格/对比图/销售列表，或可直接复制的 LaTeX array 代码。调用名为 `$memo-table`，版本以 [SKILL.md](SKILL.md) 的 `metadata.version` 为准。
 
 ## 六种样式

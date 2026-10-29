@@ -1,5 +1,5 @@
 interface:
-  display_name: "墨记表格制作 Memo-Table v1.3.0"
+  display_name: "墨记表格制作 Memo-Table v1.3.1"
   short_description: "先按材料结构标注推荐与不推荐，再预览选择图片或 LaTeX 表格样式"
   brand_color: "#36b59d"
   default_prompt: "使用 $memo-table 处理这份材料：先检查合并单元格、表头层级和内容密度，标注各样式的推荐程度与原因，再预览选型制作；不硬套模板，不改锁定包。"
