@@ -2,6 +2,14 @@
 
 遵循语义化版本：修 bug → patch，新增能力 → minor，改变契约 → major。
 
+## v1.3.2 — 2026-10-30
+
+影响面：memo-table(README.md, references/satellites.md)
+
+### 变更
+
+- Memo 系列清单加入「卡跳跳 Memo-CardLink」，同步 README 系列表与 satellites。
+
 ## v1.3.1 — 2026-10-30
 
 影响面：memo-table(README.md)
